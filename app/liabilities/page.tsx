@@ -10,7 +10,7 @@ import { Select } from '@/components/ui/Select'
 import { Modal } from '@/components/ui/Modal'
 import { createClientSupabase } from '@/lib/supabase-client'
 import { formatCurrency, formatDate } from '@/lib/utils'
-import { Plus, Search, Edit, Trash2, CreditCard, AlertTriangle } from 'lucide-react'
+import { Plus, Search, FileEdit as Edit, Trash2, CreditCard, AlertTriangle } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
 interface Liability {
