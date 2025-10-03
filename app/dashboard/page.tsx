@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { AppLayout } from '@/components/layout/AppLayout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
@@ -163,22 +164,22 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <button className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors">
+              <Link href="/expenses" className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors block text-center">
                 <Receipt className="h-6 w-6 mx-auto mb-2 text-primary-600" />
                 <span className="text-sm font-medium">Add Expense</span>
-              </button>
-              <button className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors">
+              </Link>
+              <Link href="/salaries" className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors block text-center">
                 <Users className="h-6 w-6 mx-auto mb-2 text-primary-600" />
                 <span className="text-sm font-medium">Add Employee</span>
-              </button>
-              <button className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors">
+              </Link>
+              <Link href="/liabilities" className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors block text-center">
                 <CreditCard className="h-6 w-6 mx-auto mb-2 text-primary-600" />
                 <span className="text-sm font-medium">Add Liability</span>
-              </button>
-              <button className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors">
+              </Link>
+              <Link href="/pdc" className="p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 dark:border-secondary-700 dark:hover:bg-secondary-800 transition-colors block text-center">
                 <FileText className="h-6 w-6 mx-auto mb-2 text-primary-600" />
                 <span className="text-sm font-medium">Add PDC</span>
-              </button>
+              </Link>
             </div>
           </CardContent>
         </Card>

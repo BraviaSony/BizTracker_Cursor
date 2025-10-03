@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Menu, Bell, Search, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { cn } from '@/lib/utils'
+import { createClientSupabase } from '@/lib/supabase'
+import { getCurrentUser } from '@/lib/auth'
+import { useEffect } from 'react'
 
 interface NavbarProps {
   onMenuClick: () => void
@@ -12,6 +14,16 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onMenuClick, isDarkMode, onToggleDarkMode }) => {
   const [searchQuery, setSearchQuery] = useState('')
+  const [user, setUser] = useState<any>(null)
+  const supabase = createClientSupabase()
+
+  useEffect(() => {
+    const loadUser = async () => {
+      const currentUser = await getCurrentUser()
+      setUser(currentUser)
+    }
+    loadUser()
+  }, [])
 
   return (
     <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-secondary-200 bg-white px-4 shadow-sm dark:border-secondary-700 dark:bg-secondary-800 lg:px-6">
@@ -71,15 +83,15 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick, isDarkMode, onToggleDarkMo
         <div className="flex items-center space-x-2">
           <div className="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center dark:bg-primary-900">
             <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
-              JD
+              {user?.full_name ? user.full_name.split(' ').map((n: string) => n[0]).join('').toUpperCase() : 'U'}
             </span>
           </div>
           <div className="hidden md:block">
             <p className="text-sm font-medium text-secondary-900 dark:text-white">
-              John Doe
+              {user?.full_name || 'User'}
             </p>
             <p className="text-xs text-secondary-500 dark:text-secondary-400">
-              john@example.com
+              {user?.email || ''}
             </p>
           </div>
         </div>

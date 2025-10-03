@@ -1,7 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { createClientSupabase } from '@/lib/supabase'
+import { toast } from 'react-hot-toast'
 import {
   LayoutDashboard,
   Receipt,
@@ -34,6 +37,20 @@ const navigationItems = [
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname()
+  const router = useRouter()
+  const supabase = createClientSupabase()
+
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) throw error
+      toast.success('Logged out successfully')
+      router.push('/')
+    } catch (error) {
+      console.error('Error logging out:', error)
+      toast.error('Failed to logout')
+    }
+  }
 
   return (
     <>
@@ -103,10 +120,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             <Button
               variant="ghost"
               className="w-full justify-start text-secondary-600 hover:bg-secondary-100 hover:text-secondary-900 dark:text-secondary-300 dark:hover:bg-secondary-700 dark:hover:text-white"
-              onClick={() => {
-                // Handle logout
-                console.log('Logout clicked')
-              }}
+              onClick={handleLogout}
             >
               <LogOut className="mr-3 h-5 w-5" />
               Logout

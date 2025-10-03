@@ -51,10 +51,6 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSwitchToLogin }) => {
       if (error) {
         toast.error(error.message)
       } else {
-        // Create user profile
-        if (data.user) {
-          await createUserProfile(data.user)
-        }
         toast.success('Account created successfully! Please check your email to verify your account.')
         router.push('/dashboard')
       }
