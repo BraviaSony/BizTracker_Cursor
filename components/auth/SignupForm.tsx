@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
-import { createClientSupabase } from '@/lib/supabase'
+import { createClientSupabase } from '@/lib/supabase-client'
 import { createUserProfile } from '@/lib/auth'
 import { toast } from 'react-hot-toast'
 

@@ -1,4 +1,4 @@
-import { createClientSupabase } from './supabase'
+import { createClientSupabase } from './supabase-client'
 import { User } from '@supabase/supabase-js'
 
 export interface AuthUser {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Menu, Bell, Search, Sun, Moon } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { createClientSupabase } from '@/lib/supabase'
+import { createClientSupabase } from '@/lib/supabase-client'
 import { getCurrentUser } from '@/lib/auth'
 import { useEffect } from 'react'
 

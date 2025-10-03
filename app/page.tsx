@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { LoginForm } from '@/components/auth/LoginForm'
 import { SignupForm } from '@/components/auth/SignupForm'
-import { createClientSupabase } from '@/lib/supabase'
+import { createClientSupabase } from '@/lib/supabase-client'
 
 export default function HomePage() {
   const [isLogin, setIsLogin] = useState(true)

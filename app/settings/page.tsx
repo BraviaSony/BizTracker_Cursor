@@ -6,7 +6,7 @@ import { AppLayout } from '@/components/layout/AppLayout'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { createClientSupabase } from '@/lib/supabase'
+import { createClientSupabase } from '@/lib/supabase-client'
 import { User, Building, LogOut, Save } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 

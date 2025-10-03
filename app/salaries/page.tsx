@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Modal } from '@/components/ui/Modal'
-import { createClientSupabase } from '@/lib/supabase'
+import { createClientSupabase } from '@/lib/supabase-client'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import { Plus, Search, Edit, Trash2, Users, DollarSign, CheckCircle, Clock } from 'lucide-react'
 import { toast } from 'react-hot-toast'
@@ -37,18 +37,18 @@ interface Salary {
 }
 
 const MONTHS = [
-  { value: 1, label: 'January' },
-  { value: 2, label: 'February' },
-  { value: 3, label: 'March' },
-  { value: 4, label: 'April' },
-  { value: 5, label: 'May' },
-  { value: 6, label: 'June' },
-  { value: 7, label: 'July' },
-  { value: 8, label: 'August' },
-  { value: 9, label: 'September' },
-  { value: 10, label: 'October' },
-  { value: 11, label: 'November' },
-  { value: 12, label: 'December' },
+  { value: '1', label: 'January' },
+  { value: '2', label: 'February' },
+  { value: '3', label: 'March' },
+  { value: '4', label: 'April' },
+  { value: '5', label: 'May' },
+  { value: '6', label: 'June' },
+  { value: '7', label: 'July' },
+  { value: '8', label: 'August' },
+  { value: '9', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
 ]
 
 const SALARY_STATUS = [
@@ -473,7 +473,7 @@ export default function SalariesPage() {
                             {salary.employee?.name || 'Unknown Employee'}
                           </h3>
                           <p className="text-sm text-secondary-500 dark:text-secondary-400">
-                            {MONTHS.find(m => m.value === salary.month)?.label} {salary.year}
+                            {MONTHS.find(m => parseInt(m.value) === salary.month)?.label} {salary.year}
                             {salary.employee?.position && ` • ${salary.employee.position}`}
                             {salary.paid_date && ` • Paid ${formatDate(salary.paid_date)}`}
                           </p>
